@@ -1,1 +1,2 @@
 # Jason_MTECH1201
+the main thing i which to learn while in this class is to learn how to animate movement with my sketches like making shapes bounce or to show a car driving or a person walking with some fluidity
