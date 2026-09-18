@@ -10,7 +10,7 @@ it look like time has past within this picture*/
 function draw() {
   background(100,200,100);
   fill(255,255,0);
-  strokeweight(4,255);
+  strokeWeight(4,255);
  circle (200,100,200);
  fill(255,225,225);
 triangle(0,400,400,400,200,100);
