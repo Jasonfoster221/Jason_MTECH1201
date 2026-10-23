@@ -60,7 +60,7 @@ hidden=false;
     x=random(0,width-cow.width/15);
     lastteleport=current;
   }
- 
+ //checks if hit//
   if (mouseX<x+cow.width/15
     && mouseX+spaceship.width/5>x&&
   mouseY+spaceship.height/5>y&&
