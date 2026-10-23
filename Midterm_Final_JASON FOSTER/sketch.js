@@ -66,14 +66,17 @@ hidden=false;
   }
  //checks if hit//
   if (mouseX<x+cow.width/15
-    && mouseX+spaceship.width/5>x&&
-  mouseY+spaceship.height/5>y&&
-mouseY<y+cow.height/15&&
+    && mouseX+spaceship.width/5>x
+    &&
+  mouseY+spaceship.height/5>y
+  &&
+mouseY<y+cow.height/15
+&&
 !hidden) {
   print("hit");
   hidden=true;
   timehit=current;
-  score+1;
+  score=score+1;
   }
   //settings//
   if ("start"==scene) {
@@ -97,6 +100,10 @@ mouseY<y+cow.height/15&&
     fill(255,0,0);
     textSize(25);
     text('catch the cows',height/3,width/3)
+    fill(255,0,0);
+    textSize(25);
+    text('points',0,20)
+    text(score,70,20)
   } else if("noon"==scene){
     r=200;
     g=200;
@@ -105,8 +112,12 @@ mouseY<y+cow.height/15&&
     s=100;
     d=0;
     fill(255,0,0);
+  textSize(25);
+  text('halfway there',height/3,width/3)
+  fill(255,0,0);
     textSize(25);
-    text('halfway there',height/3,width/3)
+    text('points',0,20)
+    text(score,70,20)
   } else if("night"==scene){
   r=255;
   g=255;
@@ -117,6 +128,10 @@ mouseY<y+cow.height/15&&
   fill(255,0,0);
   textSize(25);
   text('almost over',height/3,width/3)
+  fill(255,0,0);
+    textSize(25);
+    text('points',0,20)
+    text(score,70,20)
 } else if ("gameover"==scene){
 r=0;
 g=0;
@@ -127,6 +142,10 @@ d=0;
 fill(255,0,0);
     textSize(25);
     text('thanks for playing',height/3,width/3)
+fill(255,0,0);
+    textSize(25);
+    text('points',0,20)
+    text(score,70,20)
 }
 }
 
@@ -141,6 +160,7 @@ function gamestart() {
 fill(50,100,100);
   triangle(0,400,400,400,200,200);
   sun(r,g,b);
+  score=0;
   save=current;
 }
 
