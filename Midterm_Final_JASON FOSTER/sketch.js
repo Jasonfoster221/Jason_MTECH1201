@@ -1,6 +1,6 @@
 let spaceship;
 let cow;
-let scene="morning";
+let scene="start";
 let phase=5000;
 let current=0;
 let save=0;
@@ -16,6 +16,7 @@ let x=300;
 let y=320;
 let hidden=false;
 let timehit;
+let score=0;
 
 function preload() {
   spaceship=loadImage("images/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL2pvYjk2OC1lbGVtZW50LTA4OC1wXzEucG5n.webp");
@@ -29,26 +30,29 @@ function setup() {
 
 function draw() {
   background(a,s,d);
+fill(50,100,100);
+  triangle(0,400,400,400,200,200);
+  sun(r,g,b);
   current=millis();
   let timesince=current-lastteleport;
   let timesincehit=current-timehit;
+  //phases//
   if (current- save <= phase){
-scene="morning"
+scene="start"
   }
   else if (current- save <= phase*2){
-    scene="noon"
+    scene="morning"
   }
   else if (current- save <= phase*3){
-    scene="night"
+    scene="noon"
   }
-  else{save=current;
-
+  else if (current- save <= phase*4){
+scene="night"
+  }else{
+    scene="gameover"
   }
-  fill(50,100,100);
-  triangle(0,400,400,400,200,200);
-  sun(r,g,b);
+  
   if(!hidden){ 
-    image(cow,x-75,y,cow.width/15,cow.height/15);
     image(cow,x,y,cow.width/15,cow.height/15);
   }
   else if(timesincehit>500){
@@ -69,9 +73,21 @@ mouseY<y+cow.height/15&&
   print("hit");
   hidden=true;
   timehit=current;
+  score+1;
   }
   //settings//
-  if ("morning"==scene) {
+  if ("start"==scene) {
+    r=255;
+    g=255;
+    b=255;
+    a=255;
+    s=255;
+    d=255;
+    fill(255,0,0);
+    textSize(25);
+    text('get ready for fun',height/3,width/3)
+  }
+  else if ("morning"==scene) {
     r=255;
     g=255;
     b=0;
@@ -101,6 +117,16 @@ mouseY<y+cow.height/15&&
   fill(255,0,0);
   textSize(25);
   text('almost over',height/3,width/3)
+} else if ("gameover"==scene){
+r=0;
+g=0;
+b=0;
+a=0;
+s=0;
+d=0;
+fill(255,0,0);
+    textSize(25);
+    text('thanks for playing',height/3,width/3)
 }
 }
 
@@ -108,4 +134,16 @@ function sun(r,g,b) {
   fill(r,g,b),
   circle(200,100,200);
   strokeWeight(2);
+}
+
+function gamestart() {
+  background(a,s,d);
+fill(50,100,100);
+  triangle(0,400,400,400,200,200);
+  sun(r,g,b);
+  save=current;
+}
+
+function mousePressed(){
+  gamestart();
 }
